@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Upload Files</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Upload</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="single-container">
+    <div class="ion-text-center">
+      <h3 class="text-black">Single File Upload</h3>
+      
+      <div class="file-input">
+        <input #fileUpload class="file-text" type="file" accept="image/*,application/pdf" 
+        (change)="onFileChanged($event)">
+
+        <div class="file-border" (click)="fileUpload.click()">
+          <ion-icon *ngIf="!file_ext && !file_view" name="folder-outline" class="image-icon"></ion-icon>
+
+          <div *ngIf="file_ext" class="file-others">
+            <ion-icon name="document-outline" class="file-icon"></ion-icon>
+            <h3 class="text-blue text-uppercase">{{ file_ext }}</h3>
+          </div>
+
+          <img *ngIf="file_ext != '' && file_view != ''" [src]="file_view">
+        </div>
+      </div>
+
+      <div class="upload-btn">
+        <ion-button expand="block" (click)="uploadSingleFile()">Upload 1 File</ion-button>
+      </div>
+
+
+    </div>
+  </div>
+
+</ion-content>
