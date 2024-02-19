@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-upload',
@@ -11,7 +12,7 @@ export class UploadPage implements OnInit {
   filename: string = '';
   file!: File;
 
-  constructor() { }
+  constructor(public api: ApiService) { }
 
   ngOnInit() {
   }
@@ -44,7 +45,18 @@ export class UploadPage implements OnInit {
   }
 
   uploadSingleFile(){
-
+    if(this.file){
+      let formData = new FormData();
+      formData.append('upfile', this.file, this.filename);
+      this.api.httpPost('/upload', formData)
+      .then((response: any) => {
+        alert('File uploaded successfully');
+      })
+      .catch((err: any) => {
+        alert('Error: '+ JSON.stringify(err));
+      })
+    }
   }
+  
 
 }
