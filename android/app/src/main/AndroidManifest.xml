@@ -32,6 +32,7 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
+            <meta-data android:name="com.google.mlkit.vision.DEPENDENCIES" android:value="barcode_ui"/>
         </provider>
     </application>
 
@@ -41,4 +42,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> 
     <uses-feature android:name="android.hardware.location.gps" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+
 </manifest>

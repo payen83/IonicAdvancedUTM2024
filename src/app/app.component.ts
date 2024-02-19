@@ -9,7 +9,8 @@ export class AppComponent {
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'Geolocation', url: '/geolocation', icon: 'navigate' },
     { title: 'Notification', url: '/local-notification', icon: 'alert-circle' },
-    { title: 'Upload Files', url: '/upload', icon: 'cloud-upload' }
+    { title: 'Upload Files', url: '/upload', icon: 'cloud-upload' },
+    { title: 'QR Scanner', url: '/qr', icon: 'barcode' },
 
     // { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
     // { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
