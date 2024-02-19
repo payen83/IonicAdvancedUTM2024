@@ -29,16 +29,46 @@
             <ion-icon name="document-outline" class="file-icon"></ion-icon>
             <h3 class="text-blue text-uppercase">{{ file_ext }}</h3>
           </div>
-
           <img *ngIf="file_view != ''" [src]="file_view">
         </div>
       </div>
-
       <div class="upload-btn">
         <ion-button expand="block" (click)="uploadSingleFile()">Upload 1 File</ion-button>
       </div>
+    </div>
+  </div>
 
+  <div class="multiple-container">
+    <div class="ion-text-center">
+      <h3 class="text-black">Multi File Upload</h3>
+      
+      <div class="file-input">
+        <input multiple #filesUpload class="file-text" type="file" accept="image/*,application/pdf" 
+        (change)="onFilesChanged($event)">
+       
+        <div class="file-border" (click)="filesUpload.click()">
+          <ion-icon *ngIf="files_ext.length < 1 && !files_view" name="folder-outline" class="image-icon"></ion-icon>
 
+          <ng-container *ngIf="files_ext.length == 1">
+            <div *ngIf="files_ext[0] && !files_view" class="file-others">
+              <ion-icon name="document-outline" class="file-icon"></ion-icon>
+              <h3 class="text-blue text-uppercase">{{ files_ext[0] }}</h3>
+            </div>
+            <img *ngIf="files_ext[0] && files_view" [src]="files_view">
+          </ng-container>
+
+          <ng-container *ngIf="files_ext.length > 1">
+            <div class="file-others">
+              <ion-icon name="document-outline" class="file-icon"></ion-icon>
+              <h3 class="text-blue text-uppercase">{{ fileCount }} files</h3>
+            </div>
+          </ng-container>
+
+        </div>
+      </div>
+      <div class="upload-btn">
+        <ion-button expand="block" (click)="uploadMultiFile()">Upload Multiple Files</ion-button>
+      </div>
     </div>
   </div>
 

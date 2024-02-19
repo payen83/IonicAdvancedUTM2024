@@ -9,12 +9,76 @@ import { ApiService } from 'src/app/services/api.service';
 export class UploadPage implements OnInit {
   file_ext: string = '';
   file_view:  string = '';
+  files_view: string = '';
   filename: string = '';
   file!: File;
-
+  files_ext: string[] = [];
+  fileCount: number = 0;
+  fileList: File[] = [];
+  filesname: string[] = [];
   constructor(public api: ApiService) { }
 
   ngOnInit() {
+  }
+
+  onFilesChanged(filesChangeEvent: any){
+    this.filesname = [];
+    this.files_ext = [];
+    this.fileList = [];
+    this.fileCount = 0;
+    let types = [];
+
+    for (let i=0; i < filesChangeEvent.target.files.length; i++){
+      this.fileList.push(filesChangeEvent.target.files[i]);
+      this.filesname.push(filesChangeEvent.target.files[i].name);
+      types.push(filesChangeEvent.target.files[i].type);
+    }
+
+    this.filesname.map((file: any) => {
+      this.fileCount += 1;
+      this.files_ext.push(file.slice((file.lastIndexOf(".")-1>>>0)+2));
+    })
+
+    const positions = types[0].search("image");
+
+    if(positions >=0){
+      const reader = new FileReader();
+      reader.readAsDataURL(this.fileList[0]);
+      reader.onload = (event: any) => {
+        this.files_view = event.target.result;
+      };
+      reader.onerror = (error) => {
+        console.log('Error', error);
+      };
+    } else {
+      this.files_view = '';
+    }
+
+  }
+  
+  async uploadMultiFile(){
+    if(this.fileList.length > 0){
+      let success = 0;
+      let failed = 0;
+
+      for (let _file of this.fileList){
+        let formData = new FormData();
+        formData.append('upfile', _file);
+        await this.api.httpPost('/upload', formData)
+        .then((response: any)=>{
+          success++
+        }).catch((error: any)=>{
+          failed++;
+          console.log('Error while uploading file', error);
+        })
+      }
+      //show success alert
+      if(success > 0 && failed == 0){
+        alert('All files uploaded successfully');
+      } else {
+        alert('Some file failed to upload');
+      }
+    }
   }
 
   onFileChanged(fileChangeEvent: any){
@@ -57,6 +121,6 @@ export class UploadPage implements OnInit {
       })
     }
   }
-  
+
 
 }
