@@ -63,9 +63,23 @@
               <h3 class="text-blue text-uppercase">{{ fileCount }} files</h3>
             </div>
           </ng-container>
-
         </div>
       </div>
+
+      <ion-list>
+        <ion-item *ngFor="let file of fileList; let i = index;">
+          <ion-thumbnail slot="start">
+            <img [src]="file.file_view">
+          </ion-thumbnail>
+          <ion-label>{{ file.filename }}</ion-label>
+          <ion-note slot="end">
+            <ion-button fill="clear" color="danger" (click)="deleteItem(i)">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </ion-note>
+        </ion-item>
+      </ion-list>
+
       <div class="upload-btn">
         <ion-button expand="block" (click)="uploadMultiFile()">Upload Multiple Files</ion-button>
       </div>
