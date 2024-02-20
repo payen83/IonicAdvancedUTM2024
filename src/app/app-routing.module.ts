@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'qr',
     loadChildren: () => import('./pages/qr/qr.module').then( m => m.QrPageModule)
+  },
+  {
+    path: 'async',
+    loadChildren: () => import('./pages/async/async.module').then( m => m.AsyncPageModule)
   }
 ];
 

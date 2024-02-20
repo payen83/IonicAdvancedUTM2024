@@ -11,6 +11,7 @@ export class AppComponent {
     { title: 'Notification', url: '/local-notification', icon: 'alert-circle' },
     { title: 'Upload Files', url: '/upload', icon: 'cloud-upload' },
     { title: 'QR Scanner', url: '/qr', icon: 'barcode' },
+    { title: 'Async Await', url: '/async', icon: 'timer' },
 
     // { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
     // { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
