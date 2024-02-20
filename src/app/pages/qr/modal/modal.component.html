@@ -10,8 +10,24 @@
 </ion-header>
 <ion-content>
   <ion-fab slot="fixed" horizontal="end" vertical="bottom">
-    <ion-fab-button (click)="toggleTorch()">
-      <ion-icon name="flashlight"></ion-icon>
+    <ion-fab-button [color]="enableTorch ? 'danger':'primary'" (click)="toggleTorch()">
+      <ion-icon [name]="enableTorch ? 'close':'flashlight'"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+  <div class="container">
+    <div class="square"></div>
+  </div>
+  <div class="ion-padding" style="position: fixed; bottom: 0; width: 100%;">
+    <ion-range 
+    labelPlacement="stacked" 
+    label="Zoom"
+    [min]="minZoomRatio"
+    [max]="maxZoomRatio"
+    [disabled]="minZoomRatio === undefined || maxZoomRatio === undefined"
+    (ionChange)="setZoomRatio($any($event))"
+    ></ion-range>
+  </div>
+
+
 </ion-content>
