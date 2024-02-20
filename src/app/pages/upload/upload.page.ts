@@ -123,7 +123,7 @@ export class UploadPage implements OnInit {
 
       for (let _file of this.fileList){
         let formData = new FormData();
-        formData.append('upfile', _file);
+        formData.append('upfile', _file.file);
         await this.api.httpPost('/upload', formData)
         .then((response: any)=>{
           success++

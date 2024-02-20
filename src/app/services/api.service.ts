@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  baseURL: string = 'https://9670-161-139-31-248.ngrok-free.app/api'
+  // baseURL: string = 'https://9670-161-139-31-248.ngrok-free.app/api';
+  baseURL: string = 'http://localhost:8888/api';
   constructor() { }
 
   httpPost(path: string, data: any){
