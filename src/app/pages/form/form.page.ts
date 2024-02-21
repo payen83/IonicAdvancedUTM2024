@@ -9,6 +9,8 @@ import { NetworkService } from 'src/app/services/network.service';
 export class FormPage implements OnInit {
   public staff: any = {name: '', gender: ''};
   public staffList: Array<any> = [];
+  myMessage: string = '';
+  isAlertOpen: boolean = false;
   constructor(private network: NetworkService) { }
 
   async ngOnInit() {
@@ -19,10 +21,14 @@ export class FormPage implements OnInit {
     }
   }
 
+  closeAlert(status: boolean){
+    this.isAlertOpen = status;
+  }
+
   async submitForm(){
     const network = await this.network.checkNetworkStatus();
     this.staffList.push(this.staff);
-
+    this.sendMessage('Form Submitted!!');
     if(!network.connected){
       //network not available
       this.network.saveDataToStorage('STAFF', JSON.stringify(this.staffList));
@@ -31,7 +37,11 @@ export class FormPage implements OnInit {
       //network available
       //call api
     }
+  }
 
+  sendMessage(message: any){
+    this.myMessage = message;
+    this.isAlertOpen = true;
   }
 
 }

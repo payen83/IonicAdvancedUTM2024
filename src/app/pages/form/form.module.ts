@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { FormPageRoutingModule } from './form-routing.module';
 
 import { FormPage } from './form.page';
+import { AlertComponentModule } from 'src/app/components/alert/alert.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FormPageRoutingModule
+    FormPageRoutingModule,
+    AlertComponentModule
   ],
   declarations: [FormPage]
 })
