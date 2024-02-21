@@ -11,6 +11,8 @@ export class FormPage implements OnInit {
   public staffList: Array<any> = [];
   myMessage: string = '';
   isAlertOpen: boolean = false;
+  weight: number = 89;
+  unit: string = 'kg';
   constructor(private network: NetworkService) { }
 
   async ngOnInit() {

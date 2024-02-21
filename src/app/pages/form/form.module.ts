@@ -8,6 +8,7 @@ import { FormPageRoutingModule } from './form-routing.module';
 
 import { FormPage } from './form.page';
 import { AlertComponentModule } from 'src/app/components/alert/alert.module';
+import { TransformPipeModule } from 'src/app/pipes/transform.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { AlertComponentModule } from 'src/app/components/alert/alert.module';
     FormsModule,
     IonicModule,
     FormPageRoutingModule,
-    AlertComponentModule
+    AlertComponentModule,
+    TransformPipeModule
   ],
   declarations: [FormPage]
 })
