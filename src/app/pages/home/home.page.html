@@ -19,9 +19,24 @@
     <ion-button (click)="navigateTo('Test Ferdy/0123')">Test Page 2</ion-button>
   </div>
 
+  <div class="ion-padding">
+    <ion-button id="present-alert" expand="block">Submit</ion-button>
+    <ion-button (click)="presentAlert(true)" expand="block">Submit</ion-button>
+  </div>
+
   <div class="container">
     <div class="square"></div>
   </div>
+
+  <ion-alert trigger="present-alert" 
+  header="Are you sure?" 
+  [buttons]="alertButtons"></ion-alert>
+
+  <ion-alert [isOpen]="openAlert"
+  header="Are you sure?" 
+  [buttons]="alertButtons"></ion-alert>
+
+
 <div class="ion-padding" style="position: fixed; bottom: 0; width: 100%;">
   <ion-range labelPlacement="stacked" label="Zoom"></ion-range>
 </div>

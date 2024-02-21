@@ -7,10 +7,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  public alertButtons: Array<any>;
+  public openAlert: boolean = false;
+  constructor(public router: Router) { 
+    this.alertButtons = [
+      { text: 'No', role: 'cancel', handler: () => { this.closeAlert('NO'); } },
+      { text: 'Yes', role: 'confirm', handler: () => { this.closeAlert('YES'); } }
+    ]
+  }
 
-  constructor(public router: Router) { }
-
+  closeAlert(text: string){
+    console.log('Selected '+ text);
+    this.openAlert = false;
+  }
+  
   ngOnInit() {
+  }
+
+  presentAlert(isOpen: boolean){
+    this.openAlert = isOpen;
   }
 
   navigateTo(path: string){

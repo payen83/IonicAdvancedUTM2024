@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'async',
     loadChildren: () => import('./pages/async/async.module').then( m => m.AsyncPageModule)
+  },
+  {
+    path: 'form',
+    loadChildren: () => import('./pages/form/form.module').then( m => m.FormPageModule)
   }
 ];
 

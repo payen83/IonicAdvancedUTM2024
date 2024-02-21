@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NetworkService } from './services/network.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -12,6 +13,8 @@ export class AppComponent {
     { title: 'Upload Files', url: '/upload', icon: 'cloud-upload' },
     { title: 'QR Scanner', url: '/qr', icon: 'barcode' },
     { title: 'Async Await', url: '/async', icon: 'timer' },
+    { title: 'Forms', url: '/form', icon: 'document-text' },
+
 
     // { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
     // { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
@@ -21,5 +24,11 @@ export class AppComponent {
     // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
   ];
   public labels = [];
-  constructor() {}
+  constructor(private network: NetworkService) {
+    this.init();
+  }
+
+  init(){
+    this.network.beginListenerNetwork();
+  }
 }
